@@ -1,5 +1,4 @@
 import java.net.URISyntaxException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Observable;
@@ -23,15 +22,18 @@ public class Main implements Observer {
 			// add observer
 			client.addObserver(this);
 			client.connect();
-//			client.subscribe("customers", null);
+			//	client.subscribe("customers", null);
 			
-			String s1 = "{name:'peter andersson', phone:'12345678'}";
+			String s1 = new String("{\"name\":\"peter andersson\", \"phone\":\"12345678\"}"); // JSON
 			
 			Object[] objArray = new Object[1];
-			objArray[0] = s1;
-			slask("createNewCustomer", objArray);
-			client.call("createNewCustomer", objArray);
+//			objArray[0] = s1;
+//			client.call("createNewCustomer", objArray);
+
+			String s2 = new String("{\"id\":\"zXjLPNYmiTxvPNCRo\", \"name\":\"peter andersson\", \"phone\":\"87654321\"}"); // JSON
 			
+			objArray[0] = s2;
+			client.call("updateCustomer", objArray);
 			
 			// Map<DdpMessageField, Object> x = new HashMap<DdpMessageField, Object>();
 			// x.put(DdpMessageField.msg, "insert");
